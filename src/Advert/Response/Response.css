@@ -1,0 +1,114 @@
+.response {
+    width: 100%;
+}
+
+.response__phone, .response__email, .response__answer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.response__question {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.response-inputWrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+}
+
+.response-input {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ced1d3;
+    font-size: 14px;
+    font-family: sans-serif;
+    outline: none;
+    padding: 6px 12px;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.response-item__text {
+    display: none;
+}
+
+.response-btn {
+    background: #1e90ff;
+    width: 15%;
+    min-width: 70px;
+    padding: 7px;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.response-btn:hover {
+    background: #0000ff;
+}
+
+.response-btnOpacity {
+    background: rgba(200, 200, 200, .5);
+    width: 15%;
+    padding: 7px;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 16px;
+}
+
+.response-item__textBackGroundRed {
+    background-color: red;
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+.response-inputBoxShadow {
+    box-shadow: 0 0 5px 0 #61dafb;
+    border-color: #1e90ff;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+@media (min-width: 769px) {
+    .response__question, .response__phone, .response__email, .response__answer {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .response-input {
+        height: 100%;
+        margin-right: 2px;
+    }
+
+    .response-inputWrapper {
+        width: 60%;
+        height: 100%;
+    }
+
+    .response-item__text {
+        display: inline-block;
+        width: 40%;
+        padding: 6px 12px;
+        font-style: italic;
+        font-size: 14px;
+        color: #686161;
+        text-align: start;
+        font-family: sans-serif;
+    }
+
+    .response-item__textBackGroundRed {
+        color: #ffffff;
+    }
+}

@@ -1,0 +1,129 @@
+* {
+  list-style: none;
+}
+
+
+.App {
+  position: relative;
+}
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 100px 200px;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.modalClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+}
+
+.modalClose:hover {
+  cursor: pointer;
+}
+
+#mapid {
+  height: 180px;
+}
+
+.langbox {
+  width: 100%;
+  max-width: 320px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 30px 100px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btns {
+  width: 90%;
+  max-width: 400px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 30px 5px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.addFind-btn {
+  width: 45%;
+  padding: 5px 10px;
+  background-color: green;
+  border: 1px solid green;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.addLost-btn {
+  width: 45%;
+  padding: 5px 10px;
+  background-color: #e77817;
+  border: 1px solid #e77817;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.addFind-btn:hover {
+  color: green;
+  background-color: #ffffff;
+}
+
+.addLost-btn:hover {
+  color: #ff8c00;
+  background-color: #ffffff;
+}
+
+.colorLang {
+  font-weight: bolder;
+  color: red;
+}
+
+.lang {
+  cursor: pointer;
+}
+
+.leaflet-wrapperMap {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 100px 200px;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.leafletBox {
+  position: relative;
+}
+
+.leaflet-imgBack {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.leaflet-container {
+  height: 500px;
+  width: 100%;
+}
+
+::-webkit-scrollbar { width: 5px; height: 1px;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: grey; border-radius: 5px;}
+
+
+
