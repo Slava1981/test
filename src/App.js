@@ -15,9 +15,10 @@ class App extends Component {
 
     componentDidMount() {
         axios
-            .get(`http://api.luckfind.me/v1/locales/?lang=${this.state.currentLang}`)
+            .get(`https://www.luckfind.me/api/v1/locales/?lang=${this.state.currentLang}`)
             .then(response => {
-                if (response.data) {
+                console.log(response.data)
+                    if (response.data) {
                     this.setState({
                         locale: JSON.parse(response.data)
                     });

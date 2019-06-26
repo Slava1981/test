@@ -5,6 +5,9 @@ import './Response.css'
 
 class Response extends Component {
 
+    REG_EXP = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+    AMOUNT_PHONE_NUMBERS = 17
+
     state = {
         answer: "",
         phoneNumber: "",
@@ -22,12 +25,11 @@ class Response extends Component {
     };
 
     emailValidation = (event) => {
-        const regExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
         if (event.target.name === 'email') {
             this.setState({
                 noEmailValidation: false
             })
-        } else if (this.state.email === '' || (this.state.email && this.state.email.match(regExp))) {
+        } else if (this.state.email === '' || (this.state.email && this.state.email.match(this.REG_EXP))) {
             this.setState({
                 noEmailValidation: false
             })
@@ -43,7 +45,7 @@ class Response extends Component {
             this.setState({
                 noPhoneValidation: false,
             })
-        } else if (this.state.phoneNumber && this.state.phoneNumber.length !== 17) {
+        } else if (this.state.phoneNumber && this.state.phoneNumber.length !== this.AMOUNT_PHONE_NUMBERS) {
             this.setState({
                 noPhoneValidation: true,
             })
@@ -80,7 +82,6 @@ class Response extends Component {
 
 
     render() {
-        const regExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
 
         return (
             <div className="response"
@@ -89,7 +90,7 @@ class Response extends Component {
                      this.emailValidation(event);
                      this.phoneValidation(event)
                  }}>
-                <div className="response__question">На цьому місці будет контрольне запитання</div>
+                <div className="response__question">На цьому місці будет контрольне питання</div>
                 <div className="response__answer">
                     <div className="response-inputWrapper">
                         <input className={this.state.boxShadow === 'answer' ? 'response-input response-inputBoxShadow' : "response-input"}
@@ -131,8 +132,8 @@ class Response extends Component {
                         className={this.state.noEmailValidation ? "response-item__text response-item__textBackGroundRed" : "response-item__text"}>{this.props.langProps.step2.emailComment}</span>
                 </div>
                 {
-                    (this.state.phoneNumber.length === 17 ||
-                    this.state.email.match(regExp)) &&
+                    (this.state.phoneNumber.length === this.AMOUNT_PHONE_NUMBERS ||
+                    this.state.email.match(this.REG_EXP)) &&
                     this.state.answer ?
 
                         <button className="response-btn"

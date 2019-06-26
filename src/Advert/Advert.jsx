@@ -14,6 +14,7 @@ class Advert extends Component {
         advert: {},
         adElementId: '10001',
         showResponse: false,
+        item: ''
     };
 
     componentDidMount() {
@@ -27,16 +28,17 @@ class Advert extends Component {
     }
 
     getAdvertFromBase = () => {
-        axios.get(`http://api.luckfind.me/v1/adverts/?id=${this.state.adElementId}`)
+        axios.get(` https://www.luckfind.me/api/v1/items/?id=${this.state.adElementId}`)
             .then(data => {
-                    if (Object.keys(data.data.data).length) {
-                        console.log(data);
+                if (Object.keys(data.data.data).length) {
                         let lat = data.data.data.coordinates.split(',')[0]
                         let lng = data.data.data.coordinates.split(',')[1]
+                        let item = data.data.data.item
                         this.setState({
                             advert: {...data.data},
                             lat,
-                            lng
+                            lng,
+                            item
                         })
                     }
                 }
@@ -62,13 +64,14 @@ class Advert extends Component {
                         className={this.state.advert.data.type !== 'lost' ? "ribbonGreen" : "ribbonOrange"}>{this.state.advert.data.type !== 'lost' ? this.props.langProps.advertRibbonFind : this.props.langProps.advertRibbonLost}</span>
                     <div
                         className="adElement__container-number">{this.props.langProps.advertNumberText || 'Оголошення #'}
-                        <form onSubmit={(event) => {
-                            event.preventDefault();
-                            this.getAdvertFromBase()
-                        }}><input className="adElement-number" name="adElementId"
-                                  value={this.state.adElementId}
-                                  onChange={event => this.handleChangeState(event)}/>
-                        </form>
+                        <span className="adElement-number">{this.state.adElementId}</span>
+                        {/*<form onSubmit={(event) => {*/}
+                            {/*event.preventDefault();*/}
+                            {/*this.getAdvertFromBase()*/}
+                        {/*}}><input className="adElement-number" name="adElementId"*/}
+                                  {/*value={this.state.adElementId}*/}
+                                  {/*onChange={event => this.handleChangeState(event)}/>*/}
+                        {/*</form>*/}
                     </div>
                     <div className="adElement__content">
                         <div className="adElement__contentBox">
