@@ -12,7 +12,7 @@ class Advert extends Component {
 
     state = {
         advert: {},
-        adElementId: '10001',
+        postId: '10001',
         showResponse: false,
         item: ''
     };
@@ -28,7 +28,7 @@ class Advert extends Component {
     }
 
     getAdvertFromBase = () => {
-        axios.get(` https://www.luckfind.me/api/v1/items/?id=${this.state.adElementId}`)
+        axios.get(` https://www.luckfind.me/api/v1/items/?id=${this.state.postId}`)
             .then(data => {
                 if (Object.keys(data.data.data).length) {
                         let lat = data.data.data.coordinates.split(',')[0]
@@ -57,39 +57,32 @@ class Advert extends Component {
 
     render() {
         return (
-            <div className="adElement">
+            <div className="post">
                 {!!Object.keys(this.state.advert).length &&
-                <div className="adElement__container">
+                <div className="post__container">
                     <span
                         className={this.state.advert.data.type !== 'lost' ? "ribbonGreen" : "ribbonOrange"}>{this.state.advert.data.type !== 'lost' ? this.props.langProps.advertRibbonFind : this.props.langProps.advertRibbonLost}</span>
                     <div
-                        className="adElement__container-number">{this.props.langProps.advertNumberText || 'Оголошення #'}
-                        <span className="adElement-number">{this.state.adElementId}</span>
-                        {/*<form onSubmit={(event) => {*/}
-                            {/*event.preventDefault();*/}
-                            {/*this.getAdvertFromBase()*/}
-                        {/*}}><input className="adElement-number" name="adElementId"*/}
-                                  {/*value={this.state.adElementId}*/}
-                                  {/*onChange={event => this.handleChangeState(event)}/>*/}
-                        {/*</form>*/}
+                        className="post__container-number">{this.props.langProps.advertNumberText || 'Оголошення #'}
+                        <span className="post-number">{this.state.postId}</span>
                     </div>
-                    <div className="adElement__content">
-                        <div className="adElement__contentBox">
-                            <div className="adElement__content-img"><a href="#"><img
+                    <div className="post__content">
+                        <div className="post__contentBox">
+                            <div className="post__content-img"><a href="#"><img
                                 src={this.state.advert.data.image_uri}
                                 alt=""
-                                className="adElement-image"/></a></div>
-                            <h2 className="adElement__content-title">{this.state.advert.data.item}</h2>
-                            <p className="adElement__content-text">{this.state.advert.data.description}</p>
+                                className="post-image"/></a></div>
+                            <h2 className="post__content-title">{this.state.advert.data.item}</h2>
+                            <p className="post__content-text">{this.state.advert.data.description}</p>
                             {!!this.state.advert.data.reward && <span
-                                className="adElement__content-money">{this.props.langProps.advertReward} {this.state.advert.data.reward}
+                                className="post__content-money">{this.props.langProps.advertReward} {this.state.advert.data.reward}
                                 грн.</span>}
-                            <span className="adElement__content-date"><img src={clock} alt=""
-                                                                           className="adElement__content-dateIcon"/> {moment(this.state.advert.data.item_date).format('DD.MM.YYYY')}</span>
+                            <span className="post__content-date"><img src={clock} alt=""
+                                                                           className="post__content-dateIcon"/> {moment(this.state.advert.data.item_date).format('DD.MM.YYYY')}</span>
                             <div onClick={() => this.toggle('showResponse')}
-                                 className={this.state.advert.data.type === 'lost' ? "adElement-inputBtnGreen" : "adElement-inputBtnOrange"}>{this.state.advert.data.type === 'lost' ? this.props.langProps.advertButtonFind : this.props.langProps.advertButtonLost}</div>
+                                 className={this.state.advert.data.type === 'lost' ? "post-inputBtnGreen" : "post-inputBtnOrange"}>{this.state.advert.data.type === 'lost' ? this.props.langProps.advertButtonFind : this.props.langProps.advertButtonLost}</div>
                         </div>
-                        <Map classNameProps={'leaflet-wrapperAdElement'}
+                        <Map classNameProps={'leaflet-wrapperpost'}
                              lat={this.state.lat}
                              lng={this.state.lng}/>
                     </div>

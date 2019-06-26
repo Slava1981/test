@@ -1,4 +1,4 @@
-.adElement {
+.post {
     width: 100%;
     max-width: 1170px;
     min-width: 320px;
@@ -8,7 +8,7 @@
     padding-top: 30px;
 }
 
-.adElement__container {
+.post__container {
     position: relative;
     padding-top: 30px;
     width: 90%;
@@ -17,7 +17,7 @@
     align-items: flex-start;
 }
 
-.adElement__content {
+.post__content {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -25,14 +25,14 @@
     padding: 20px 0 ;
 }
 
-.adElement__contentBox {
+.post__contentBox {
     width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
 }
 
-.adElement__content-number {
+.post__content-number {
     display: flex;
 }
 
@@ -82,32 +82,32 @@
     background: linear-gradient(45deg, transparent 10px, #008000 0) top left;
 }
 
-.adElement-number {
+.post-number {
     font-weight: bold;
 }
 
-.adElement__content-title, .adElement__content-text, .adElement__content-money, .adElement__content-number, .adElement__content-date {
+.post__content-title, .post__content-text, .post__content-money, .post__content-number, .post__content-date {
     margin-bottom: 10px;
 }
 
-.adElement__content-text {
+.post__content-text {
     font-weight: bold;
 }
 
-.adElement__content-img {
+.post__content-img {
     width: 80%;
     margin: 0 auto 5px;
 }
 
-.adElement-image {
+.post-image {
     width: 100%;
 }
 
-.adElement__content-dateIcon {
+.post__content-dateIcon {
     width: 13px;
 }
 
-.leaflet-wrapperAdElement {
+.leaflet-wrapperpost {
     width: 100%;
     height: 300px;
 }
@@ -117,7 +117,7 @@
     width: 100%;
 }
 
-.adElement-inputBtnGreen, .adElement-inputBtnOrange {
+.post-inputBtnGreen, .post-inputBtnOrange {
     width: 270px;
     min-width: 180px;
     height: 100%;
@@ -131,33 +131,33 @@
     cursor: pointer;
 }
 
-.adElement-inputBtnGreen {
+.post-inputBtnGreen {
     background-color: #008000;
 }
 
-.adElement-inputBtnOrange {
+.post-inputBtnOrange {
     background-color: #e77817;
 }
 
 @media (min-width: 769px) {
-    .adElement__container {
+    .post__container {
         width: 90%;
     }
 
-    .adElement__content-img {
+    .post__content-img {
         width: 50%;
     }
 
-    .adElement__content {
+    .post__content {
         flex-direction: row;
         justify-content: space-between;
     }
 
-    .leaflet__wrapperAdElement {
+    .leaflet__wrapperpost {
         width: 50%;
     }
 
-    .adElement__contentBox {
+    .post__contentBox {
         width: 70%;
     }
 }
