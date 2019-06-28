@@ -16,7 +16,10 @@ export default class Somemap extends Component {
 
     render() {
 
+        if(!this.props.lat && !this.props.lng) return null
+
         return (
+
             <div className={this.props.classNameProps}>
                 <div className="leafletBox">
                     <Map center={[this.state.center.lat, this.state.center.lng]} zoom={this.state.zoom}>

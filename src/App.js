@@ -34,14 +34,6 @@ class App extends Component {
         // })
     }
 
-    handleChange = (event) => {
-        let value = event.target.value
-        this.setState({
-            address: event.target.value,
-        })
-
-    }
-
     render() {
         if (!this.state.locale) return null;
 
