@@ -28,7 +28,11 @@ class Advert extends Component {
     }
 
     getAdvertFromBase = () => {
-        axios.get(` https://www.luckfind.me/api/v1/items/?id=${this.state.postId}`)
+        let id = window.location.search.replace('?id=', '');
+        this.setState({
+            postId: id
+        });
+        axios.get(` https://www.luckfind.me/api/v1/items/?id=${id}`)
             .then(data => {
                 if (Object.keys(data.data.data).length) {
                         let lat = data.data.data.coordinates.split(',')[0]
@@ -56,6 +60,7 @@ class Advert extends Component {
     }
 
     render() {
+
         return (
             <div className="post">
                 {!!Object.keys(this.state.advert).length &&

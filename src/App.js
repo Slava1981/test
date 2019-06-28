@@ -14,10 +14,14 @@ class App extends Component {
     }
 
     componentDidMount() {
+        this.getLangFromBase()
+    }
+
+    getLangFromBase = () => {
         axios
             .get(`https://www.luckfind.me/api/v1/locales/?lang=${this.state.currentLang}`)
             .then(response => {
-                    if (response.data) {
+                if (response.data) {
                     this.setState({
                         locale: JSON.parse(response.data)
                     });
@@ -29,7 +33,7 @@ class App extends Component {
         //     throw new Error("There is an API error");
         // })
     }
-    
+
     handleChange = (event) => {
         let value = event.target.value
         this.setState({
@@ -37,14 +41,14 @@ class App extends Component {
         })
 
     }
-    
+
     render() {
         if (!this.state.locale) return null;
 
         return (
             <div className="App">
                 <Advert
-                langProps={this.state.locale}/>
+                    langProps={this.state.locale}/>
             </div>
         )
             ;
