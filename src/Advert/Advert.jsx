@@ -38,7 +38,6 @@ class Advert extends Component {
         });
         axios.get(` https://www.luckfind.me/api/v1/items/?id=${id}`)
             .then(data => {
-                console.log(data.data);
                 if (Object.keys(data.data.data).length) {
                         let lat = data.data.data.coordinates.split(',')[0]
                         let lng = data.data.data.coordinates.split(',')[1]
@@ -68,7 +67,7 @@ class Advert extends Component {
 
         const tagArr = Object.keys(this.state.advert).length ? this.state.advert.data.meta.split(', ') : []
         const textAdvert = Object.keys(this.state.advert).length ? this.state.advert.data.description.replace(/(https:\/\/[.\w/=&?]+)/gi, "") : ""
-        const href = Object.keys(this.state.advert).length ? this.state.advert.data.description.match(/(https:\/\/[.\w/=&?]+)/gi)[0] : ""
+        const href = Object.keys(this.state.advert).length && this.state.advert.data.description.match(/(https:\/\/[.\w/=&?]+)/gi) ? this.state.advert.data.description.match(/(https:\/\/[.\w/=&?]+)/gi)[0] : ""
         let key = 1
 
             return (
