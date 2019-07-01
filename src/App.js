@@ -77,7 +77,6 @@ class App extends Component {
     }
 
     toggleIsShowModal = () => {
-        console.log('click');
         this.setState(prevState => ({
             isShowModal: !prevState.isShowModal
         }))

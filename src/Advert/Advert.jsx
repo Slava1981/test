@@ -58,7 +58,7 @@ class Advert extends Component {
                                 {tagArr.map(tag => <a href={`${this.KEYWORD_URL}/${this.props.language}/search.php?q=${tag}`} className='tag' key={++key + 1 + 'tag'}>{`${tag},`}</a>)}
                             </div>}
                             {!!this.props.advert.data.reward && <span
-                                className="post__content-money">{this.props.langProps.advertReward} {this.state.advert.data.reward}
+                                className="post__content-money">{this.props.langProps.advertReward} {this.props.advert.data.reward}
                                 грн.</span>}
                             <span className="post__content-date"><img src={clock} alt=""
                                                                       className="post__content-dateIcon"/> {moment(this.props.advert.data.item_date).format('DD.MM.YYYY')}</span>
