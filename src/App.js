@@ -1,19 +1,17 @@
 import React, {createRef, Component} from 'react';
 import Advert from './Advert/Advert'
 import Modal from './Modal/Modal'
+import Preloader from './Preloader/Preloader'
 import './App.css';
 
 import axios from 'axios';
 
 class App extends Component {
     state = {
-        currentLang: new URL(window.location.href).searchParams.get("lang") || 'ua',
+        currentLang: window.lang || new URL(window.location.href).searchParams.get("lang") || 'ua',
         locale: null,
-        addFind: new URL(window.location.href).searchParams.get("type") === "found",
-        addLost: new URL(window.location.href).searchParams.get("type") === "lost",
         advert: {},
         postId: '10001',
-        someItem: '',
         showResponse: false,
         item: '',
         lat: '',
@@ -38,9 +36,9 @@ class App extends Component {
                     throw new Error("Locales not found");
                 }
             })
-        // .catch(error => {
-        //     throw new Error("There is an API error");
-        // })
+        .catch(error => {
+            console.warn("There is an API error");
+        })
     }
 
     getAdvertFromBase = () => {
@@ -50,7 +48,6 @@ class App extends Component {
         });
         axios.get(`https://www.luckfind.me/api/v1/items/?id=${id}`)
             .then(data => {
-                    console.log(data.data.data);
                     if (data.data.data && Object.keys(data.data.data).length) {
                         let lat = '', lng = ''
                         if (data.data.data.coordinates) {
@@ -71,9 +68,9 @@ class App extends Component {
                     }
                 }
             )
-        // .catch(error => {
-        //     throw new Error("There is an API error")
-        // })
+        .catch(error => {
+            console.warn("There is an API error")
+        })
     }
 
     toggleIsShowModal = () => {
@@ -83,7 +80,9 @@ class App extends Component {
     }
 
     render() {
-        if (!this.state.locale) return null;
+
+        if (!this.state.locale) return <Preloader/>;
+        if (!this.state.locale && !this.state.postId) return <Preloader/>;
 
         return (
             <div className="App">

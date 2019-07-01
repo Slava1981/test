@@ -70,7 +70,7 @@ class Advert extends Component {
                              lng={this.props.lng}/>
                     </div>
                     {this.state.showResponse && <Response
-                        langProps={this.state.langProps}/>}
+                        langProps={this.props.langProps}/>}
                 </div>}
             </div>
         )
