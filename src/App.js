@@ -2,6 +2,7 @@ import React, {createRef, Component} from 'react';
 import Advert from './Advert/Advert'
 import Modal from './Modal/Modal'
 import Preloader from './Preloader/Preloader'
+import RecommendAverts from './RecommendAverts/RecommendAverts'
 import './App.css';
 
 import axios from 'axios';
@@ -11,6 +12,7 @@ class App extends Component {
         currentLang: window.lang || new URL(window.location.href).searchParams.get("lang") || 'ua',
         locale: null,
         advert: {},
+        recommendAdvertsArr: [],
         postId: '10001',
         showResponse: false,
         item: '',
@@ -22,6 +24,7 @@ class App extends Component {
     componentDidMount() {
         this.getLangFromBase()
         this.getAdvertFromBase()
+        this.getRecommendAdvertsFromBase()
     }
 
     getLangFromBase = () => {
@@ -36,18 +39,39 @@ class App extends Component {
                     throw new Error("Locales not found");
                 }
             })
-        .catch(error => {
-            console.warn("There is an API error");
-        })
+            .catch(error => {
+                console.warn("There is an API error");
+            })
     }
 
-    getAdvertFromBase = () => {
+
+    getRecommendAdvertsFromBase = () => {
         let id = new URL(window.location.href).searchParams.get("id");
+        axios.get(`https://www.luckfind.me/api/v1/related/?id=${id}`)
+            .then(data => {
+                console.log(data.data.data);
+                if (data.data.data && Object.keys(data.data.data).length) {
+                    this.setState({
+                        recommendAdvertsArr: [...data.data.data],
+                    })
+                }
+            })
+
+    }
+
+    getAdvertFromBase = (event) => {
+        let id
+        if (event) {
+            id = event.target.id
+        } else {
+            id = new URL(window.location.href).searchParams.get("id");
+        }
         this.setState({
             postId: id,
         });
         axios.get(`https://www.luckfind.me/api/v1/items/?id=${id}`)
             .then(data => {
+                    console.log(data.data);
                     if (data.data.data && Object.keys(data.data.data).length) {
                         let lat = '', lng = ''
                         if (data.data.data.coordinates) {
@@ -68,9 +92,9 @@ class App extends Component {
                     }
                 }
             )
-        .catch(error => {
-            console.warn("There is an API error")
-        })
+            .catch(error => {
+                console.warn("There is an API error")
+            })
     }
 
     toggleIsShowModal = () => {
@@ -97,6 +121,10 @@ class App extends Component {
                     lat={this.state.lat}
                     lng={this.state.lng}
                     toggleIsShowModal={this.toggleIsShowModal}
+                />
+                <RecommendAverts
+                    langProps={this.state.locale}
+                    recommendAdvertsArr={this.state.recommendAdvertsArr}
                 />
                 <Modal
                     advert={this.state.advert}

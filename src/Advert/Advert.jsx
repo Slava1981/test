@@ -4,7 +4,8 @@ import Map from '../Map/Map';
 import axios from 'axios';
 import moment from 'moment';
 
-import clock from '../img/clock-regular.svg'
+import clock from '../img/clock-regular.svg';
+import eye from '../img/eye.svg';
 
 import './Advert.css';
 
@@ -58,8 +59,10 @@ class Advert extends Component {
                                 {tagArr.map(tag => <a href={`${this.KEYWORD_URL}/${this.props.language}/search.php?q=${tag}`} className='tag' key={++key + 1 + 'tag'}>{`${tag},`}</a>)}
                             </div>}
                             {!!this.props.advert.data.reward && <span
-                                className="post__content-money">{this.props.langProps.advertReward} {this.props.advert.data.reward}
+                                className="post__content-money">{this.props.langProps.advertReward || 'Встановлена винагорода:'} {this.props.advert.data.reward}
                                 грн.</span>}
+                            {!!this.props.advert.data.views && <span
+                                className="post__content-money"><img className='viewImg' src={eye} alt=""/>{this.props.langProps.advertView || 'Кілкість переглядів:'} {this.props.advert.data.views}</span>}
                             <span className="post__content-date"><img src={clock} alt=""
                                                                       className="post__content-dateIcon"/> {moment(this.props.advert.data.item_date).format('DD.MM.YYYY')}</span>
                             <div onClick={() => this.toggle('showResponse')}

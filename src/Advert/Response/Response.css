@@ -1,5 +1,6 @@
 .response {
     width: 100%;
+    margin-bottom: 70px;
 }
 
 .response__phone, .response__email, .response__answer {
