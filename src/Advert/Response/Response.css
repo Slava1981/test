@@ -41,7 +41,6 @@
 }
 
 .response-btn {
-    background: #6495ed;
     width: 15%;
     min-width: 70px;
     padding: 7px;
@@ -54,13 +53,17 @@
     cursor: pointer;
 }
 
-.response-btn:hover {
-    background: #0000ff;
+.response-btnGreen {
+    background-color: #008000;
+}
+.response-btnOrange {
+    background-color: #e77817;
 }
 
 .response-btnOpacity {
     background: rgba(200, 200, 200, .5);
     width: 15%;
+    min-width: 100px;
     padding: 7px;
     color: #ffffff;
     border: none;

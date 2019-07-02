@@ -125,6 +125,7 @@ class App extends Component {
                 <RecommendAverts
                     langProps={this.state.locale}
                     recommendAdvertsArr={this.state.recommendAdvertsArr}
+                    language={this.state.currentLang}
                 />
                 <Modal
                     advert={this.state.advert}

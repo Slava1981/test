@@ -136,7 +136,7 @@ class Response extends Component {
                     this.state.email.match(this.REG_EXP)) &&
                     this.state.answer ?
 
-                        <button className="response-btn"
+                        <button className={this.props.advert === 'lost' ? "response-btn response-btnGreen" : "response-btn response-btnOrange"}
                                 onClick={(e) => this.sendResponse(e)}>{this.props.langProps.sendButton}
                         </button> :
                         <button className="response-btnOpacity">Надіслати</button>}

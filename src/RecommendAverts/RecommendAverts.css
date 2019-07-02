@@ -1,16 +1,43 @@
 .recommendAverts {
-    margin-top: 10px;
+    width: 100%;
+    min-width: 320px;
+    max-width: 1170px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     padding-bottom: 30px;
+    margin: 10px auto 0;
+}
+
+.recommendAverts__title {
+    width: 100%;
+    min-width: 320px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.recommendAverts-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    padding: 20px 0;
 }
 
 .recommendAverts__item {
-    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+    min-width: 180px;
     margin-right: 20px;
     border: 1px solid #ced1d3;
     border-radius: 5px;
     padding: 15px;
+
+}
+
+.recommendAverts__item:hover {
+    box-shadow: 0 0 20px 0;
 }
 
 .borderTop-green {
@@ -26,17 +53,64 @@
 }
 
 .recommendAverts__item-imgBox {
+    position: relative;
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
+    height: 100px;
 }
 
 .recommendAverts__item-img {
-    width: 90%;
+    height: 100px;
+}
+
+.recommendAverts__item-img:hover {
+    position: absolute;
+    left: 50%;
+    top: -5px;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+    height: 110%;
 }
 
 .recommendAverts__item-title {
     margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+.recommendAverts__item-text {
+    word-break: break-all;
+    margin-bottom: 5px;
+    height: 100px;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.recommendAverts__item-title:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.recommendAverts__additionalBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-tags {
+    margin-bottom: 5px;
+}
+
+.recAdtag {
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #6495ed;
+    margin-right: 5px;
+    text-decoration: underline;
+}
+
+.recAdtag:hover {
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .textColor-green {
@@ -45,5 +119,19 @@
 
 .textColor-orange{
     color: orange;
+}
+
+.dateIcon {
+    width: 13px;
+}
+
+@media (min-width: 769px) {
+
+}
+
+@media (min-width: 1250px) {
+    .recommendAverts-box {
+        padding: 20px;
+    }
 }
 

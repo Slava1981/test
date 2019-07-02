@@ -8,6 +8,9 @@
 
 .App {
   position: relative;
+  width: 100%;
+  min-width: 320px;
+  padding: 0 10px;
 }
 
 .modal {
