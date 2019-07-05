@@ -6,6 +6,7 @@ import './Response.css'
 class Response extends Component {
 
     REG_EXP = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+
     AMOUNT_PHONE_NUMBERS = 17
 
     state = {
@@ -90,7 +91,10 @@ class Response extends Component {
                      this.emailValidation(event);
                      this.phoneValidation(event)
                  }}>
-                <div className="response__question">На цьому місці будет контрольне питання</div>
+
+                <div className="response__question">
+                    На цьому місці буде контрольне питання
+                </div>
                 <div className="response__answer">
                     <div className="response-inputWrapper">
                         <input className={this.state.boxShadow === 'answer' ? 'response-input response-inputBoxShadow' : "response-input"}
@@ -98,10 +102,9 @@ class Response extends Component {
                                type="text"
                                name='answer'
                                data-name="answer"
-                               placeholder="Введіть вашу відповідь"
+                               placeholder={this.props.langProps.advert.response.text}
                         />
                     </div>
-                    <span className="response-item__text">Ваша відповідь</span>
                 </div>
                 <div className="response__phone">
                     <div className="response-inputWrapper">
@@ -115,8 +118,6 @@ class Response extends Component {
                                    name='phoneNumber'
                                    data-name="phone"/>
                     </div>
-                    <span
-                        className={this.state.noPhoneValidation ? 'response-item__text response-item__textBackGroundRed' : 'response-item__text'}>{this.props.langProps.step2.phoneNumberComment}</span>
                 </div>
                 <div className="response__email">
                     <div className="response-inputWrapper">
@@ -128,18 +129,14 @@ class Response extends Component {
                             onChange={e => this.handleChangeState(e)}
                             placeholder={this.props.langProps.step2.emailPlaceHolder}/>
                     </div>
-                    <span
-                        className={this.state.noEmailValidation ? "response-item__text response-item__textBackGroundRed" : "response-item__text"}>{this.props.langProps.step2.emailComment}</span>
                 </div>
-                {
-                    (this.state.phoneNumber.length === this.AMOUNT_PHONE_NUMBERS ||
-                    this.state.email.match(this.REG_EXP)) &&
-                    this.state.answer ?
-
-                        <button className={this.props.advert === 'lost' ? "response-btn response-btnGreen" : "response-btn response-btnOrange"}
-                                onClick={(e) => this.sendResponse(e)}>{this.props.langProps.sendButton}
-                        </button> :
-                        <button className="response-btnOpacity">Надіслати</button>}
+                    <button 
+                        disabled={this.state.phoneNumber.length !== this.AMOUNT_PHONE_NUMBERS || !this.state.email.match(this.REG_EXP) || !this.state.answer}
+                        className={this.props.advert === 'lost' ? "response-btn response-btnGreen" : "response-btn response-btnOrange"}
+                        onClick={(e) => this.sendResponse(e)}>
+                    
+                        {this.props.langProps.advert.response.button}
+                    </button>
             </div>
         )
     }

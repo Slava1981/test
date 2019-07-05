@@ -27,6 +27,7 @@
     border-radius: 5px;
     transform: translate(-50%, 100px);
     z-index: 1000;
+    text-align: center;
 }
 
 .modalImg__img {

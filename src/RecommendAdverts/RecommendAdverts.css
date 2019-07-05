@@ -1,0 +1,138 @@
+.recommendAdverts {
+    width: 100%;
+    min-width: 320px;
+    max-width: 1170px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    margin-top: 10px;
+    background: #fff;
+}
+
+.recommendAdverts__title {
+    width: 100%;
+    min-width: 320px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.recommendAdverts-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+
+.recommendAdverts__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+    width: 180px;
+    margin-bottom: 20px;
+    border: 1px solid #ced1d3;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f8f4ed;
+}
+
+.recommendAdverts__item,
+.recommendAdverts__item-img {
+    transition: all 300ms ease-in-out; 
+}
+
+.recommendAdverts__item:hover {
+    box-shadow: 0 0 19px -15px;
+}
+
+.borderTop-green {
+    border-top: 5px solid green;
+}
+
+.borderTop-orange {
+    border-top: 5px solid orange;
+}
+
+.recommendAdverts__item:last-child {
+    margin-right: 0;
+}
+
+.recommendAdverts__item-imgBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    height: 100px;
+}
+
+.recommendAdverts__item-img {
+    height: 100px;
+}
+
+.recommendAdverts__item-img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.recommendAdverts__item-title {
+    margin-bottom: 5px;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.recommendAdverts__item-text {
+    padding: 5px 0 15px 0;
+    font-weight: 300;
+}
+
+.recommendAdverts__item-title:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.recommendAdverts__additionalBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-tags {
+    margin-bottom: 5px;
+}
+
+.recAdtag {
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #6495ed;
+    margin-right: 5px;
+    text-decoration: underline;
+}
+
+.recAdtag:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.textColor-green {
+    color: green;
+}
+
+.textColor-orange{
+    color: orange;
+}
+
+.dateIcon {
+    width: 13px;
+    margin: 0 5px 0 1px;
+}
+
+@media (max-width: 500px) {
+    .recommendAdverts-box {
+        justify-content: center;
+    }
+
+    .recommendAdverts__item {
+        width: 100%;
+    }
+}

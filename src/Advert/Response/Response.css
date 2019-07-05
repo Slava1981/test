@@ -44,33 +44,21 @@
     width: 15%;
     min-width: 70px;
     padding: 7px;
-    color: #ffffff;
+    color: #fff;
     border: none;
     outline: none;
     border-radius: 5px;
     margin: auto;
     font-size: 16px;
     cursor: pointer;
+    transition: all 300ms ease-in-out;
 }
 
-.response-btnGreen {
-    background-color: #008000;
-}
-.response-btnOrange {
-    background-color: #e77817;
-}
-
-.response-btnOpacity {
-    background: rgba(200, 200, 200, .5);
-    width: 15%;
-    min-width: 100px;
-    padding: 7px;
-    color: #ffffff;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    margin: auto;
-    font-size: 16px;
+.response-btn:disabled,
+.response-btn:disabled:hover {
+    background: gray;
+    cursor: default;
+    pointer-events: none;
 }
 
 .response-item__textBackGroundRed {
@@ -86,7 +74,13 @@
 }
 
 @media (min-width: 769px) {
-    .response__question, .response__phone, .response__email, .response__answer {
+    .response {
+        width: 80%;
+    }
+    .response__question, 
+    .response__phone, 
+    .response__email, 
+    .response__answer {
         flex-direction: row;
         align-items: flex-start;
     }

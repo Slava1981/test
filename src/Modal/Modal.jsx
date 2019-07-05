@@ -13,8 +13,10 @@ export default class Modal extends React.Component {
             <div className="modalImg">
                 <div className="modalImg__boxImg">
                     <div className="wrapperImg">
-                    <img src={this.props.advert.data.image_uri}
-                         className="modalImg__img"/>
+                    <img 
+                        src={this.props.advert.data.image_uri}
+                        className="modalImg__img"
+                        alt="" />
 
                     <img
                         className='modalImg__close'

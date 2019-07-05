@@ -1,4 +1,4 @@
-import React, {createRef, Component} from 'react'
+import React, { Component } from 'react'
 import {Map, TileLayer, Marker, Popup} from 'react-leaflet'
 
 export default class Somemap extends Component {

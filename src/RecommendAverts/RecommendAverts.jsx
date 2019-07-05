@@ -6,11 +6,13 @@ import './RecommendAverts.css';
 import clock from '../img/clock-regular.svg';
 import eye from '../img/eye.svg';
 
-const RecommendAverts = ({langProps, recommendAdvertsArr, getAdvertFromBase, language}) => {
+const RecommendAverts = ({langProps, recommendAdvertsArr, getAdvertFromBase, language, advert}) => {
     const KEYWORD_URL = 'https://www.luckfind.me'
     let key = 1
     let i = 1
     let hrefUpload = 'https://luckfind.me/upload/'
+
+    if (!advert) return null
 
     return (
         <div className='recommendAverts'>
