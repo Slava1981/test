@@ -29,9 +29,6 @@ export default class Somemap extends Component {
                         />
                         <Marker
                             position={[this.state.marker.lat, this.state.marker.lng]}>
-                            <Popup minWidth={90}>
-                                <span>Перетащите маркер на нужную точку</span>
-                            </Popup>
                         </Marker>
                     </Map>
                 </div>

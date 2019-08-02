@@ -34,7 +34,7 @@ const RecommendAdverts = ({ langProps, recommendAdvertsArr, getAdvertFromBase, l
                             </a>
                         </h3>
                         <p className="recommendAdverts__item-text">
-                            {advert.description}
+                            {[...advert.description].length > 70 ? [...advert.description].slice(0, 50).join('') + ' ...' : advert.description}
                         </p>
                     </div>
                     <div className='recommendAdverts__additionalBox'>

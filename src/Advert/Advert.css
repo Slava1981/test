@@ -64,14 +64,14 @@
     padding-left: 10px;
 }
 
-.post__content-title, 
-.post__content-text, 
+.post__content-title,
+.post__content-text,
 .post__content-tags {
     margin-bottom: 10px;
 }
 
-.post__content-money, 
-.post__content-number, 
+.post__content-money,
+.post__content-number,
 .post__content-date {
     margin-bottom: 5px;
 }
@@ -84,6 +84,8 @@
 .post__content-text {
     font-size: 18px;
     font-weight: 300;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .post__content-title {
@@ -112,12 +114,11 @@
     color: #6495ed;
 }
 
-.tag:hover, 
+.tag:hover,
 .hrefInText:hover {
     color: #337ab7;
     text-decoration: underline;
 }
-
 
 .post__content-img {
     width: 80%;
@@ -146,7 +147,7 @@
     width: 100%;
 }
 
-.post-inputBtnGreen, 
+.post-inputBtnGreen,
 .post-inputBtnOrange {
     height: 100%;
     border-radius: 5px;

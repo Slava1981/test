@@ -15,7 +15,7 @@ class App extends Component {
         locale: null,
         advert: {},
         recommendAdvertsArr: [],
-        postId: new URL(window.location.href).searchParams.get("id") || '10001',
+        postId: window.preloadedId || new URL(window.location.href).searchParams.get("id"),
         showResponse: false,
         item: '',
         lat: '',

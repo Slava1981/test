@@ -29,7 +29,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 20%;
     width: 180px;
     margin-bottom: 20px;
     border: 1px solid #ced1d3;
@@ -85,6 +84,7 @@
 .recommendAdverts__item-text {
     padding: 5px 0 15px 0;
     font-weight: 300;
+    word-break: break-word;
 }
 
 .recommendAdverts__item-title:hover {

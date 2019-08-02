@@ -92,8 +92,9 @@ class Advert extends Component {
                                 /> 
                                     {moment(this.props.advert.data.item_date).format('DD.MM.YYYY')}
                             </span>
-                            <div onClick={() => this.toggle('showResponse')}
+                            {this.props.advert.data.hasAdditional !== null && <div onClick={() => this.toggle('showResponse')}
                                  className={this.props.advert.data.type === 'lost' ? "post-inputBtnGreen" : "post-inputBtnOrange"}>{this.props.advert.data.type === 'lost' ? this.props.langProps.advertButtonFind : this.props.langProps.advertButtonLost}</div>
+                            }
                         </div>
                         <Map classNameProps={'leaflet-wrapperPost'}
                              lat={this.props.lat}

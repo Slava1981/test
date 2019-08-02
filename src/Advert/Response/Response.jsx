@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import InputMask from 'react-input-mask';
 
+import axios from 'axios';
+
 import './Response.css'
 
 class Response extends Component {
@@ -16,7 +18,10 @@ class Response extends Component {
         noEmailValidation: false,
         noPhoneValidation: false,
         boxShadow: "",
-        value: ""
+        value: "",
+        isDisabled: false,
+        showForm: true,
+        sendStatus: null
     };
 
     handleChangeState = (event) => {
@@ -81,8 +86,31 @@ class Response extends Component {
         })
     };
 
+    sendResponse = () => {
+        axios.post('https://www.luckfind.me/api/v1/secret/', {
+            id: this.props.advert.data.id,
+            answer: this.state.answer,
+            email: this.state.email,
+            phone: this.state.phoneNumber
+        })
+        .then(response => {
+            this.setState({
+                showForm: false,
+                sendStatus: true
+            });
+        });
+
+        this.setState({
+            isDisabled: true
+        });
+    };
 
     render() {
+        if (this.state.sendStatus) return this.props.langProps.control.response;
+        
+        if (!this.state.showForm || !this.props.advert.data.hasAdditional) return null;
+
+        console.log(this.props.advert);
 
         return (
             <div className="response"
@@ -93,7 +121,7 @@ class Response extends Component {
                  }}>
 
                 <div className="response__question">
-                    На цьому місці буде контрольне питання
+                    {this.props.langProps.control.title} : <span>{this.props.langProps.control[this.props.advert.data.hasAdditional] ? this.props.langProps.control[this.props.advert.data.hasAdditional] : this.props.advert.data.additionalQuestion}</span>
                 </div>
                 <div className="response__answer">
                     <div className="response-inputWrapper">
@@ -109,14 +137,15 @@ class Response extends Component {
                 <div className="response__phone">
                     <div className="response-inputWrapper">
                         <InputMask mask="+38(999)999-99-99"
-                                   maskChar={null}
-                                   defaultValue={this.state.phoneNumber}
-                                   onChange={event => this.handleChangeState(event)}
-                                   beforeMaskedValueChange={this.beforeMaskedValueChange}
-                                   placeholder="+38 (___) ___-__-__"
-                                   className={this.state.boxShadow === 'phone' ? 'response-input response-inputBoxShadow' : "response-input"}
-                                   name='phoneNumber'
-                                   data-name="phone"/>
+                            maskChar={null}
+                            defaultValue={this.state.phoneNumber}
+                            onChange={event => this.handleChangeState(event)}
+                            beforeMaskedValueChange={this.beforeMaskedValueChange}
+                            placeholder="+38 (___) ___-__-__"
+                            className={this.state.boxShadow === 'phone' ? 'response-input response-inputBoxShadow' : "response-input"}
+                            name='phoneNumber'
+                            data-name="phone"
+                        />
                     </div>
                 </div>
                 <div className="response__email">
@@ -131,7 +160,7 @@ class Response extends Component {
                     </div>
                 </div>
                     <button 
-                        disabled={this.state.phoneNumber.length !== this.AMOUNT_PHONE_NUMBERS || !this.state.email.match(this.REG_EXP) || !this.state.answer}
+                        disabled={this.state.isDisabled || this.state.phoneNumber.length !== this.AMOUNT_PHONE_NUMBERS || !this.state.email.match(this.REG_EXP) || !this.state.answer}
                         className={this.props.advert === 'lost' ? "response-btn response-btnGreen" : "response-btn response-btnOrange"}
                         onClick={(e) => this.sendResponse(e)}>
                     
