@@ -39,9 +39,11 @@ const RecommendAdverts = ({ langProps, recommendAdvertsArr, getAdvertFromBase, l
                     </div>
                     <div className='recommendAdverts__additionalBox'>
                         {!!advert.meta && <div className="content-tags">
-                            {(Object.keys(advert.meta).length ? advert.meta.split(',') : []).map(tag => <a
+                            {
+                                ((advert.meta).length > 50 ? [...advert.meta].slice(0, 30).join('').split(',') : advert.meta.split(',') || []).map(tag => <a
                                 href={`${DOMAIN}/${language}/search.php?q=${tag}`} className='recAdtag'
-                                key={`tag ${advert.id} ${tag}`}>{`${tag},`}</a>)}
+                                key={`tag ${advert.id} ${tag}`}>{`${tag},`}</a>)
+                            }
                         </div>}
                         <span
                             className="recommendAdverts__item-view">
