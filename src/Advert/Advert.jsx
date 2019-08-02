@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Response from './Response/Response';
+import ResponseForAnimal from './Response/ResponseForAnimal';
 import Map from '../Map/Map';
 import moment from 'moment';
 
@@ -29,6 +30,10 @@ class Advert extends Component {
         if (!this.props.advert) return <p className="post-checkingAdvert">
             {this.props.langProps.advert.noresults}
         </p>
+
+        if (!this.props.advert.data) return null
+
+        let type = this.props.advert.data.hasAdditional
 
         const tagArr = Object.keys(this.props.advert).length ? this.props.advert.data.meta.split(',') : []
         const textAdvert = Object.keys(this.props.advert).length ? this.props.advert.data.description.replace(/(https:\/\/[.\w/=&?]+)/gi, "") : ""
@@ -66,7 +71,7 @@ class Advert extends Component {
                             </div>}
                             {!!this.props.advert.data.reward && <span
                                 className="post__content-money">
-                                <img 
+                                <img
                                     src={money}
                                     alt=""
                                     className="post__content-moneyIcon"
@@ -76,23 +81,24 @@ class Advert extends Component {
                             {!!this.props.advert.data.views && <span
                                 title={this.props.langProps.advert.views}
                                 className="post__content-money">
-                                    <img 
-                                        className='viewImg' 
+                                    <img
+                                        className='viewImg'
                                         src={eye}
                                         alt=""
                                     />
-                                    {this.props.advert.data.views}
+                                {this.props.advert.data.views}
                                 </span>
                             }
                             <span className="post__content-date">
-                                <img 
+                                <img
                                     src={clock}
                                     alt=""
                                     className="post__content-dateIcon"
-                                /> 
-                                    {moment(this.props.advert.data.item_date).format('DD.MM.YYYY')}
+                                />
+                                {moment(this.props.advert.data.item_date).format('DD.MM.YYYY')}
                             </span>
-                            {this.props.advert.data.hasAdditional !== null && <div onClick={() => this.toggle('showResponse')}
+                            {this.props.advert.data.hasAdditional !== null &&
+                            <div onClick={() => this.toggle('showResponse')}
                                  className={this.props.advert.data.type === 'lost' ? "post-inputBtnGreen" : "post-inputBtnOrange"}>{this.props.advert.data.type === 'lost' ? this.props.langProps.advertButtonFind : this.props.langProps.advertButtonLost}</div>
                             }
                         </div>
@@ -101,11 +107,17 @@ class Advert extends Component {
                              lng={this.props.lng}/>
                     </div>
                     {
-                        this.state.showResponse && 
+                        this.state.showResponse && type !== 'animal' &&
                         <Response
                             langProps={this.props.langProps}
                             advert={this.props.advert}
                         />
+                    }
+                    {
+                        this.state.showResponse && type === 'animal' &&
+                            <ResponseForAnimal
+                                langProps={this.props.langProps}
+                                advert={this.props.advert}/>
                     }
                 </div>}
             </div>
