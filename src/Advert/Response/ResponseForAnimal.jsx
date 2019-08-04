@@ -123,12 +123,12 @@ class ResponseForAnimal extends Component {
                 {/*</div>*/}
                 <div className="response__answer">
                     <div className="response-inputWrapper">
-                        <input className={this.state.boxShadow === 'comment' ? 'response-input response-inputBoxShadow' : "response-input"}
+                        <textarea className={this.state.boxShadow === 'comment' ? 'response-textArea response-inputBoxShadow' : "response-textArea"}
                                onChange={event => this.handleChangeState(event)}
                                type="text"
                                name='comment'
                                data-name="comment"
-                               placeholder='Залиште додадкову iнформацию'
+                               placeholder='Залиште додаткову iнформацию'
                         />
                     </div>
                 </div>
